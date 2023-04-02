@@ -6,8 +6,8 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
-group = "com.example.archloomtemplate"
-version = "1.0.0"
+group = "a7"
+version = "0.0.1"
 
 // Toolchains:
 java {
@@ -23,17 +23,17 @@ loom {
             property("mixin.debug", "true")
             property("asmhelper.verbose", "true")
             arg("--tweakClass", "org.spongepowered.asm.launch.MixinTweaker")
-            arg("--mixin", "mixins.examplemod.json")
+            arg("--mixin", "mixins.itemsearcher.json")
         }
     }
     forge {
         pack200Provider.set(dev.architectury.pack200.java.Pack200Adapter())
         // If you don't want mixins, remove this lines
-        mixinConfig("mixins.examplemod.json")
+        mixinConfig("mixins.itemsearcher.json")
     }
     // If you don't want mixins, remove these lines
     mixin {
-        defaultRefmapName.set("mixins.examplemod.refmap.json")
+        defaultRefmapName.set("mixins.itemsearcher.refmap.json")
     }
 }
 
@@ -77,14 +77,14 @@ tasks.withType(JavaCompile::class) {
 }
 
 tasks.withType(Jar::class) {
-    archiveBaseName.set("examplemod")
+    archiveBaseName.set("itemsearcher")
     manifest.attributes.run {
         this["FMLCorePluginContainsFMLMod"] = "true"
         this["ForceLoadAsMod"] = "true"
 
         // If you don't want mixins, remove these lines
         this["TweakClass"] = "org.spongepowered.asm.launch.MixinTweaker"
-        this["MixinConfigs"] = "mixins.examplemod.json"
+        this["MixinConfigs"] = "mixins.itemsearcher.json"
     }
 }
 
@@ -105,7 +105,7 @@ tasks.shadowJar {
     }
 
     // If you want to include other dependencies and shadow them, you can relocate them in here
-    fun relocate(name: String) = relocate(name, "com.examplemod.deps.$name")
+    fun relocate(name: String) = relocate(name, "a7.itemsearcher.deps.$name")
 }
 
 tasks.assemble.get().dependsOn(tasks.remapJar)

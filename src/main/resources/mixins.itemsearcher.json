@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "a7.itemSearcher.mixin",
+  "refmap": "mixins.itemsearcher.refmap.json",
+  "minVersion": "0.7",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "MixinGuiContainer"
+  ]
+}

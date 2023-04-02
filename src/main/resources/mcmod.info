@@ -1,14 +1,14 @@
 [
   {
-	"modid": "examplemod",
-	"name": "Xample Mod",
-	"description": "A mod that is used as an example.",
-	"version": "1.0.0",
+	"modid": "itemsearcher",
+	"name": "Item searcher",
+	"description": "A mod that searches items.",
+	"version": "0.0.1",
 	"mcversion": "1.8.9",
-	"url": "https://github.com/romangraef/Forge1.8.9Template/",
+	"url": "https://github.com/Alan72104/Item-searcher",
 	"updateUrl": "",
 	"authorList": [
-	  "You"
+	  "Alan72104"
 	],
 	"credits": "",
 	"logoFile": "",
