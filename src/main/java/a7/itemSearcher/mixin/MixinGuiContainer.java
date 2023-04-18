@@ -15,23 +15,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiContainer.class)
-public abstract class MixinGuiContainer extends GuiScreen
-{
-    @Shadow
-    public Container inventorySlots;
-    
+public abstract class MixinGuiContainer extends GuiScreen {
     @Inject(method = "drawSlot", at = @At("TAIL"))
-    public void slotDrawn(Slot slot, CallbackInfo ci)
-    {
-        ItemStack stack = slot.getStack();
-        if (stack == null)
-            return;
-
-        if (ItemSearcher.searcher.isOn())// &&
-//                ItemSearcher.searcher.stackMatches(stack))
-        {
-            RenderUtils.drawGradientRect(slot.xDisplayPosition, slot.yDisplayPosition,
-                    slot.xDisplayPosition + 16, slot.yDisplayPosition + 16, 200, 0x800080FF, 0xB000B0FF, 3);
-        }
+    public void slotDrawn(Slot slot, CallbackInfo ci) {
+        ItemSearcher.searcher.onSlotDrawn(slot, ci);
     }
 }

@@ -1,5 +1,7 @@
 package a7.itemSearcher;
 
+import net.minecraftforge.client.ClientCommandHandler;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
@@ -14,5 +16,9 @@ public class ItemSearcher {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         searcher = new Searcher();
+
+        MinecraftForge.EVENT_BUS.register(searcher);
+
+        ClientCommandHandler.instance.registerCommand(new ItemSearcherCommand());
     }
 }
